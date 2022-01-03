@@ -7,6 +7,7 @@
       pointer-events: auto;
     }
   }
+
 }
 
 .social-block__toggler {
@@ -35,6 +36,7 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
+    transition: 0.35s all;
   }
 
   svg {
@@ -44,13 +46,30 @@
     height: 2.2rem;
   }
 
-  &:hover,
   .social-block--active & {
-    color: $c-purple;
+
+    &::before {
+      background-color: $c-purple;
+      border-color: $c-purple;
+    }
+
+    svg {
+      color: $c-light;
+    }
+  }
+
+  &:hover {
+    color: $c-dark;
 
     &::before {
       width: 112.5%;
       height: 112.5%;
+      background-color: $c-light;
+      border-color: $c-light;
+    }
+
+    svg {
+      color: $c-dark;
     }
   }
 
@@ -89,6 +108,7 @@
   margin-top: 1.5rem;
   opacity: 0;
   pointer-events: none;
+  transition-delay: 2s;
 
   @media (min-width: $stop-scaling) {
     margin-top: 15px;
@@ -140,6 +160,7 @@
   .social-block--active & {
     opacity: 1;
     pointer-events: auto;
+    transition-delay: 0s;
   }
 
   li {
@@ -168,6 +189,12 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  transform: translateY(8px);
+  opacity: 0;
+  transition-delay: 0.5s, 3s;
+  transition-property: opacity, transform;
+  transition-duration: 0.35s;
+
 
   @media (min-width: $stop-scaling) {
     width: 40px;
@@ -177,11 +204,29 @@
   @media (max-width: $tablet) and (orientation: portrait) {
     color: $c-light;
     background-color: $c-dark;
+    opacity: 1;
+    transform: none;
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
     color: $c-light;
     background-color: $c-dark;
+  }
+
+  .social-block--active & {
+    transform: translateY(0);
+    opacity: 1;
+    transition: 0.35s all;
+
+    &--insta {
+      transition-delay: 0.2s, 0s, 0.2s;
+      transition-property: transform, color, opacity;
+    }
+    
+    &--vk {
+      transition-delay: 0.4s, 0s, 0.4s;
+      transition-property: transform, color, opacity;
+    }
   }
 
   &:hover {

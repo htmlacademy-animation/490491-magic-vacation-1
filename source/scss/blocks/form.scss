@@ -44,6 +44,32 @@
   border-radius: 3rem;
   outline: none;
 
+  .screen--game.active &#message-field {
+    width: calc(100% - 21rem);
+
+    @media (min-width: $stop-scaling) {
+      width: calc(100% - 210px);
+    }
+  
+    @media (orientation: portrait) {
+      width: calc(100% - 5rem);
+    }
+  
+    @media (max-width: $tablet) and (orientation: landscape) {
+      width: calc(100% - 9rem);
+    }
+  
+    @media (max-width: $mobile) and (orientation: landscape) {
+      width: calc(100% - 5rem);
+    }
+  }
+
+  &#message-field {
+    width: 80px;
+    margin-left: auto;
+    transition: 0.35s width;
+  }
+
   &:focus {
     border: 1px solid $c-purple;
   }
@@ -79,7 +105,23 @@
 }
 
 .form__button {
-  flex-grow: 1;
+  flex-grow: 0;
+
+  #message-form & {
+    flex-basis: 18rem;
+
+    @media (orientation: portrait) {
+      flex-basis: 4rem;
+    }
+  
+    @media (max-width: $tablet) and (orientation: landscape) {
+      flex-basis: 6rem;
+    }
+  
+    @media (max-width: $mobile) and (orientation: landscape) {
+      flex-basis: 4rem;
+    }
+  }
 
   @media (orientation: portrait) {
     position: relative;
