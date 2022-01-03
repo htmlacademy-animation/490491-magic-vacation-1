@@ -46,6 +46,12 @@
   color: $c-dark;
   background-color: $c-light;
   z-index: 1;
+  transform: translateY(100%);
+  transition: transform 0.5s 0s cubic-bezier(.67,.54,.15,.96);
+
+  .page-load & {
+    transform: none;
+  }
 
   @media (max-width: $tablet) and (orientation: portrait) {
     width: 3.5rem;
