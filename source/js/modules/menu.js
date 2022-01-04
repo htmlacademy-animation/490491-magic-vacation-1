@@ -2,6 +2,7 @@ export default () => {
   let header = document.querySelector(`.js-header`);
   let menuToggler = document.querySelector(`.js-menu-toggler`);
   let menuLinks = document.querySelectorAll(`.js-menu-link`);
+  let screenBg = document.querySelector(`.js-screen-bg`);
 
   if (menuToggler) {
     menuToggler.addEventListener(`click`, function () {
@@ -20,6 +21,13 @@ export default () => {
       if (window.innerWidth < 1025) {
         header.classList.remove(`page-header--menu-opened`);
         document.body.classList.remove(`menu-opened`);
+      }
+
+      if (this.dataset.href === `prizes`) {
+        screenBg.classList.add(`animate`);
+        setTimeout(()=>{
+          screenBg.classList.remove(`animate`);
+        }, 1000);
       }
     });
   }
