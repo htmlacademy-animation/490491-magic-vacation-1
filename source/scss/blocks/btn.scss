@@ -9,7 +9,7 @@
   font-size: 2.4rem;
   line-height: 3rem;
   color: $c-dark;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.04em;  
 
   @media (min-width: $stop-scaling) {
     padding: 15px 29px;
@@ -64,5 +64,46 @@
       background-color: $c-purple;
       border-color: $c-purple;
     }
+  }
+}
+
+.btn_expand {
+
+  &::before {
+    top: 50%;
+    left: auto;
+    right: 0;
+    transform: translateY(-50%);
+    width: 80px;
+    opacity: 0;
+    animation-name: animation-btn;
+    animation-duration: 0.35s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+
+  span {
+    opacity: 0;
+    animation-name: animation-btn-text;
+    animation-duration: 0.35s;
+    animation-delay: 1.35s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes animation-btn-text {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes animation-btn {
+  20% {
+    opacity: 1;
+  }
+
+  to {
+    width: 100%;
+    opacity: 1;
   }
 }
