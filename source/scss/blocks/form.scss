@@ -67,7 +67,102 @@
   &#message-field {
     width: 80px;
     margin-left: auto;
-    transition: 0.35s width;
+    transition: width 0.35s 0.8s;
+  }
+
+  &#email-field2 {
+    opacity: 0;    
+    width: 80px;
+    margin-left: auto;
+    animation-name: animation-email-appear;
+    animation-duration: 0.6s;
+    animation-delay: 0.8s;    
+    animation-fill-mode: forwards;
+
+    @keyframes animation-placeholder-appear {  
+      to {
+        // opacity: 1;
+      }
+    }
+
+    &::placeholder {
+      // opacity: 0;
+      animation-name: animation-placeholder-appear;
+      animation-duration: 0.35s;
+      animation-delay: 1.15s;    
+      animation-fill-mode: forwards;
+    }
+
+    @media (min-width: $stop-scaling) {
+      animation-name: animation-email-appear2;
+    }
+
+    @media (orientation: portrait) {
+      animation-name: animation-email-appear3;
+    }
+
+    @media (max-width: $tablet) and (orientation: landscape) {
+      animation-name: animation-email-appear4;
+    }
+
+    @media (max-width: $mobile) and (orientation: landscape) {
+      animation-name: animation-email-appear5;
+    }
+  }
+
+  @keyframes animation-email-appear {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 1;
+      width: calc(100% - 31rem);
+    }
+  }
+
+  @keyframes animation-email-appear2 {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 1;
+      width: calc(100% - 310px);
+    }
+  }
+
+  @keyframes animation-email-appear3 {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 1;
+      width: calc(100% - 5rem);
+    }
+  }
+
+  @keyframes animation-email-appear4 {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 1;
+      width: calc(100% - 9rem);
+    }
+  }
+
+  @keyframes animation-email-appear5 {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 1;
+      width: calc(100% - 5rem);
+    }
   }
 
   &:focus {
@@ -167,24 +262,25 @@
   }
 }
 
-.form--result {
-  .form__field {
-    width: calc(100% - 31rem);
+// .screen--result.screen--show {
+//   .form__field#email-field2 {
+//     opacity: 1;
+//     width: calc(100% - 31rem);
 
-    @media (min-width: $stop-scaling) {
-      width: calc(100% - 310px);
-    }
+//     @media (min-width: $stop-scaling) {
+//       width: calc(100% - 310px);
+//     }
 
-    @media (orientation: portrait) {
-      width: calc(100% - 5rem);
-    }
+//     @media (orientation: portrait) {
+//       width: calc(100% - 5rem);
+//     }
 
-    @media (max-width: $tablet) and (orientation: landscape) {
-      width: calc(100% - 9rem);
-    }
+//     @media (max-width: $tablet) and (orientation: landscape) {
+//       width: calc(100% - 9rem);
+//     }
 
-    @media (max-width: $mobile) and (orientation: landscape) {
-      width: calc(100% - 5rem);
-    }
-  }
-}
+//     @media (max-width: $mobile) and (orientation: landscape) {
+//       width: calc(100% - 5rem);
+//     }
+//   }
+// }
