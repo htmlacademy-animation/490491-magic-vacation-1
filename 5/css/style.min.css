@@ -1140,6 +1140,37 @@ img {
     opacity: 1;
   }
 }
+@keyframes animation-btn-appear {
+  to {
+    opacity: 1;
+  }
+}
+.btn_text-appear::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 3.5rem;
+  opacity: 0;
+  z-index: -1;
+  animation-name: animation-btn-appear;
+  animation-duration: 0.2s;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+}
+.btn_text-appear span {
+  opacity: 0;
+  animation-name: animation-btn-text;
+  animation-duration: 0.35s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
 .chat {
   flex-grow: 1;
   display: flex;
@@ -1522,7 +1553,88 @@ img {
 .form__field#message-field {
   width: 80px;
   margin-left: auto;
-  transition: 0.35s width;
+  transition: width 0.35s 0.8s;
+}
+.form__field#email-field2 {
+  opacity: 0;
+  width: 80px;
+  margin-left: auto;
+  animation-name: animation-email-appear;
+  animation-duration: 0.6s;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+}
+@keyframes animation-placeholder-appear {}
+.form__field#email-field2::placeholder {
+  animation-name: animation-placeholder-appear;
+  animation-duration: 0.35s;
+  animation-delay: 1.15s;
+  animation-fill-mode: forwards;
+}
+@media (min-width: 2000px) {
+  .form__field#email-field2 {
+    animation-name: animation-email-appear2;
+  }
+}
+@media (orientation: portrait) {
+  .form__field#email-field2 {
+    animation-name: animation-email-appear3;
+  }
+}
+@media (max-width: 1024px) and (orientation: landscape) {
+  .form__field#email-field2 {
+    animation-name: animation-email-appear4;
+  }
+}
+@media (max-width: 768px) and (orientation: landscape) {
+  .form__field#email-field2 {
+    animation-name: animation-email-appear5;
+  }
+}
+@keyframes animation-email-appear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    width: calc(100% - 31rem);
+  }
+}
+@keyframes animation-email-appear2 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    width: calc(100% - 310px);
+  }
+}
+@keyframes animation-email-appear3 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    width: calc(100% - 5rem);
+  }
+}
+@keyframes animation-email-appear4 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    width: calc(100% - 9rem);
+  }
+}
+@keyframes animation-email-appear5 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    width: calc(100% - 5rem);
+  }
 }
 .form__field:focus {
   border: 1px solid #a67ee5;
@@ -1631,30 +1743,6 @@ img {
 @media (max-width: 1024px) and (orientation: landscape) {
   .form__button svg {
     display: block;
-  }
-}
-
-.form--result .form__field {
-  width: calc(100% - 31rem);
-}
-@media (min-width: 2000px) {
-  .form--result .form__field {
-    width: calc(100% - 310px);
-  }
-}
-@media (orientation: portrait) {
-  .form--result .form__field {
-    width: calc(100% - 5rem);
-  }
-}
-@media (max-width: 1024px) and (orientation: landscape) {
-  .form--result .form__field {
-    width: calc(100% - 9rem);
-  }
-}
-@media (max-width: 768px) and (orientation: landscape) {
-  .form--result .form__field {
-    width: calc(100% - 5rem);
   }
 }
 
@@ -1789,7 +1877,6 @@ img {
   left: 0;
   z-index: 100;
   opacity: 0.5;
-  display: none;
 }
 
 .game__button {
@@ -2764,11 +2851,376 @@ img {
   height: 100%;
 }
 .result__image img {
+  position: absolute;
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+}
+
+@keyframes suitcase {
+  to {
+    bottom: 13.5%;
+    opacity: 1;
+    width: 439px;
+    height: auto;
+  }
+}
+@keyframes suitcase-tablet {
+  to {
+    bottom: 10.5%;
+    opacity: 1;
+    width: 350px;
+    height: auto;
+  }
+}
+@keyframes suitcase-mobile {
+  to {
+    bottom: 13.5%;
+    opacity: 1;
+    width: 200px;
+    height: auto;
+  }
+}
+.result__suitcase-img {
+  bottom: 0;
+  left: 47%;
+  width: 0;
+  height: 0;
+  z-index: 5;
+  transform: translateX(-50%);
+  animation-name: suitcase;
+  animation-duration: 0.5s;
+  animation-delay: 0.2s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+@media (max-width: 1024px) and (orientation: landscape) {
+  .result__suitcase-img {
+    animation-name: suitcase-tablet;
+  }
+}
+@media (max-width: 768px) {
+  .result__suitcase-img {
+    animation-name: suitcase-mobile;
+  }
+}
+
+@keyframes leaf-right-appear {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes leaf-right-rotate1 {
+  from {
+    transform: rotate(-7deg);
+  }
+  to {
+    transform: rotate(10deg);
+  }
+}
+@keyframes leaf-right-rotate2 {
+  from {
+    transform: rotate(10deg);
+  }
+  to {
+    transform: rotate(-3deg);
+  }
+}
+@keyframes leaf-right-rotate3 {
+  from {
+    transform: rotate(-3deg);
+  }
+  to {
+    transform: rotate(3deg);
+  }
+}
+@keyframes leaf-right-rotate4 {
+  from {
+    transform: rotate(3deg);
+  }
+  to {
+    transform: rotate(-1deg);
+  }
+}
+@keyframes leaf-right-rotate5 {
+  from {
+    transform: rotate(-1deg);
+  }
+  to {
+    transform: rotate(1deg);
+  }
+}
+@keyframes leaf-right-rotate6 {
+  from {
+    transform: rotate(1deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+.result__leaf-blue1-img {
+  top: 39%;
+  left: 50%;
+  width: 360px;
+  height: auto;
+  transform-origin: 0% 75%;
+  opacity: 0;
+  animation-name: leaf-right-appear, leaf-right-rotate1, leaf-right-rotate2, leaf-right-rotate3, leaf-right-rotate4, leaf-right-rotate5, leaf-right-rotate6;
+  animation-duration: 0.4s, 0.4s, 0.4s, 0.4s, 0.4s, 0.4s, 0.4s;
+  animation-delay: 0.5s, 0.5s, 0.9s, 1.3s, 1.7s, 2.1s, 2.5s;
+  animation-timing-function: linear, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+  animation-fill-mode: forwards, none, none, none, none, none, forwards;
+}
+@media (max-width: 1024px) and (orientation: landscape) {
+  .result__leaf-blue1-img {
+    top: 54%;
+    left: 53%;
+    width: 230px;
+  }
+}
+@media (max-width: 768px) {
+  .result__leaf-blue1-img {
+    top: 65%;
+    left: 54%;
+    width: 150px;
+  }
+}
+
+@keyframes leaf-left-appear {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes leaf-left-rotate1 {
+  from {
+    transform: rotate(25deg);
+  }
+  to {
+    transform: rotate(-23deg);
+  }
+}
+@keyframes leaf-left-rotate2 {
+  from {
+    transform: rotate(-23deg);
+  }
+  to {
+    transform: rotate(7deg);
+  }
+}
+@keyframes leaf-left-rotate3 {
+  from {
+    transform: rotate(7deg);
+  }
+  to {
+    transform: rotate(-6deg);
+  }
+}
+@keyframes leaf-left-rotate4 {
+  from {
+    transform: rotate(-6deg);
+  }
+  to {
+    transform: rotate(3deg);
+  }
+}
+@keyframes leaf-left-rotate5 {
+  from {
+    transform: rotate(3deg);
+  }
+  to {
+    transform: rotate(-2deg);
+  }
+}
+@keyframes leaf-left-rotate6 {
+  from {
+    transform: rotate(-2deg);
+  }
+  to {
+    transform: rotate(1deg);
+  }
+}
+@keyframes leaf-left-rotate7 {
+  from {
+    transform: rotate(1deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+.result__leaf-blue2-img {
+  top: 54%;
+  right: 56%;
+  width: 334px;
+  height: auto;
+  transform-origin: 100% 50%;
+  transform: rotate(25deg);
+  opacity: 0;
+  animation-name: leaf-left-appear, leaf-left-rotate1, leaf-left-rotate2, leaf-left-rotate3, leaf-left-rotate4, leaf-left-rotate5, leaf-left-rotate6, leaf-left-rotate7;
+  animation-duration: 0.4s, 0.4s, 0.4s, 0.4s, 0.4s, 0.4s, 0.4s, 0.4s;
+  animation-delay: 0.5s, 0.5s, 0.9s, 1.3s, 1.7s, 2.1s, 2.5s, 2.9s;
+  animation-timing-function: linear, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+  animation-fill-mode: forwards, none, none, none, none, none, none, forwards;
+}
+@media (max-width: 1024px) and (orientation: landscape) {
+  .result__leaf-blue2-img {
+    top: 63%;
+    right: 58%;
+    width: 220px;
+  }
+}
+@media (max-width: 768px) {
+  .result__leaf-blue2-img {
+    top: 71%;
+    right: 57%;
+    width: 140px;
+  }
+}
+
+@keyframes leaf-green-appear {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes leaf-green-rotate1 {
+  from {
+    transform: rotate(-7deg);
+  }
+  to {
+    transform: rotate(10deg);
+  }
+}
+@keyframes leaf-green-rotate2 {
+  from {
+    transform: rotate(10deg);
+  }
+  to {
+    transform: rotate(-3deg);
+  }
+}
+@keyframes leaf-green-rotate3 {
+  from {
+    transform: rotate(-3deg);
+  }
+  to {
+    transform: rotate(3deg);
+  }
+}
+@keyframes leaf-green-rotate4 {
+  from {
+    transform: rotate(3deg);
+  }
+  to {
+    transform: rotate(-1deg);
+  }
+}
+@keyframes leaf-green-rotate5 {
+  from {
+    transform: rotate(-1deg);
+  }
+  to {
+    transform: rotate(1deg);
+  }
+}
+@keyframes leaf-green-rotate6 {
+  from {
+    transform: rotate(1deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+.result__leaf-green-img {
+  top: 58%;
+  left: 49%;
+  width: 418px;
+  height: auto;
+  opacity: 0;
+  transform-origin: 0% 80%;
+  animation-name: leaf-green-appear, leaf-green-rotate1, leaf-green-rotate2, leaf-green-rotate3, leaf-green-rotate4, leaf-green-rotate5, leaf-green-rotate6;
+  animation-duration: 0.4s, 0.4s, 0.4s, 0.4s, 0.4s, 0.4s, 0.4s;
+  animation-delay: 0.6s, 0.6s, 1s, 1.4s, 1.8s, 2.2s, 2.6s;
+  animation-timing-function: linear, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+  animation-fill-mode: forwards, none, none, none, none, none, forwards;
+}
+@media (max-width: 1024px) and (orientation: landscape) {
+  .result__leaf-green-img {
+    top: 68%;
+    left: 53%;
+    width: 240px;
+  }
+}
+@media (max-width: 768px) {
+  .result__leaf-green-img {
+    top: 73%;
+    left: 51%;
+    width: 160px;
+  }
+}
+
+@keyframes flamingo-appear {
+  to {
+    opacity: 1;
+    bottom: 32%;
+  }
+}
+@keyframes flamingo-appear-tablet {
+  to {
+    opacity: 1;
+    bottom: 25%;
+  }
+}
+@keyframes flamingo-appear-mobile {
+  to {
+    opacity: 1;
+    bottom: 23%;
+  }
+}
+@keyframes flamingo-motion {
+  to {
+    bottom: 30.5%;
+  }
+}
+@keyframes flamingo-motion-tablet {
+  to {
+    bottom: 23.5%;
+  }
+}
+@keyframes flamingo-motion-mobile {
+  to {
+    bottom: 21.5%;
+  }
+}
+@keyframes flamingo-rotation {
+  to {
+    transform: translate(50%, 50%) rotate(-5deg);
+  }
+}
+.result__flamingo-img {
+  bottom: 0;
+  right: 58%;
+  width: 302px;
+  height: auto;
+  z-index: 10;
+  transform: translate(50%, 50%);
+  transform-origin: 60% 65%;
+  opacity: 0;
+  animation-name: flamingo-appear, flamingo-motion, flamingo-rotation;
+  animation-duration: 0.5s, 1.2s, 1.2s;
+  animation-delay: 0.2s, 0.7s, 0.7s;
+  animation-timing-function: ease, ease, ease-in-out;
+  animation-fill-mode: forwards, none, none;
+  animation-iteration-count: 1, infinite, infinite;
+  animation-direction: normal, alternate, alternate;
+}
+@media (max-width: 1024px) and (orientation: landscape) {
+  .result__flamingo-img {
+    width: 220px;
+    animation-name: flamingo-appear-tablet, flamingo-motion-tablet, flamingo-rotation;
+  }
+}
+@media (max-width: 768px) {
+  .result__flamingo-img {
+    width: 140px;
+    animation-name: flamingo-appear-mobile, flamingo-motion-mobile, flamingo-rotation;
+  }
 }
 
 .result__title {
@@ -3737,7 +4189,6 @@ img {
   left: 0;
   right: 0;
   background-color: #5f458c;
-  opacity: 0;
   pointer-events: none;
 }
 .screen--result.screen--show {
