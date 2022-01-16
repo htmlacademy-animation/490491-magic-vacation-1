@@ -419,12 +419,20 @@
 }
 
 @keyframes flamingo-motion-tablet {
+  from {
+    bottom: 25%;
+  }
+
   to {
     bottom: 23.5%;
   }
 }
 
 @keyframes flamingo-motion-mobile {
+  from {
+    bottom: 25%;
+  }
+
   to {
     bottom: 21.5%;
   }
