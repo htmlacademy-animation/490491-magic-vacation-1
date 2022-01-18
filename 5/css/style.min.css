@@ -3164,6 +3164,9 @@ img {
   }
 }
 @keyframes flamingo-appear-mobile {
+  from {
+    transform: translate(-97%, 437px);
+  }
   to {
     transform: translate(-97%, 0);
     opacity: 1;
@@ -3205,8 +3208,8 @@ img {
   height: auto;
   z-index: 10;
   transform-origin: 60% 65%;
-  transform: translate(-97%, 437px);
-  opacity: 1;
+  transform: translate(-97%, 0);
+  opacity: 0;
   animation-name: flamingo-appear, flamingo-motion, flamingo-rotation;
   animation-duration: 0.5s, 1.5s, 1.5s;
   animation-delay: 0.2s, 0.7s, 0.7s;
