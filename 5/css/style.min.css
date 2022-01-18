@@ -3170,16 +3170,25 @@ img {
   }
 }
 @keyframes flamingo-motion {
+  from {
+    transform: translate(-97%, 0);
+  }
   to {
     transform: translate(-97%, 25px);
   }
 }
 @keyframes flamingo-motion-tablet {
+  from {
+    transform: translate(-97%, 0);
+  }
   to {
     transform: translate(-97%, 25px);
   }
 }
 @keyframes flamingo-motion-mobile {
+  from {
+    transform: translate(-97%, 0);
+  }
   to {
     transform: translate(-97%, 25px);
   }
