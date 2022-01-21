@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+import AccentTypographyBuild from './accent-typography-builder';
 
 export default class FullPageScroll {
   constructor() {
@@ -12,6 +13,12 @@ export default class FullPageScroll {
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+    this.introTitle = new AccentTypographyBuild(`.intro__title`, 500, `accent-typography--active`, `transform`, 300);
+    this.storyTitle = new AccentTypographyBuild(`.slider__item-title`, 500, `accent-typography--active`, `transform`, 300);
+    this.prizesTitle = new AccentTypographyBuild(`.prizes__title`, 500, `accent-typography--active`, `transform`, 300);
+    this.rulesTitle = new AccentTypographyBuild(`.rules__title`, 500, `accent-typography--active`, `transform`, 300);
+    this.gameTitle = new AccentTypographyBuild(`.game__title`, 500, `accent-typography--active`, `transform`, 300);  
+    this.introDate = new AccentTypographyBuild(`.intro__date`, 500, `accent-typography--active`, `transform`);      
   }
 
   init() {
@@ -51,6 +58,48 @@ export default class FullPageScroll {
     this.emitChangeDisplayEvent();
   }
 
+  destroyTextAnimations() {
+    this.introTitle.destroyAnimation();
+    this.introDate.destroyAnimation();
+    this.storyTitle.destroyAnimation();
+    this.prizesTitle.destroyAnimation();
+    this.rulesTitle.destroyAnimation();
+    this.gameTitle.destroyAnimation();
+  }
+
+  runTextAnimations() {
+    switch(this.screenElements[this.activeScreen].id) {
+      case 'top': 
+        {
+          this.introTitle.runAnimation();
+          this.introDate.runAnimation();
+        }
+        break;     
+        case 'story': 
+          {
+            this.storyTitle.runAnimation();
+          }
+          break;  
+        case 'prizes': 
+          {
+            this.prizesTitle.runAnimation();
+          }
+          break; 
+        case 'rules': 
+          {
+            this.rulesTitle.runAnimation();
+          }
+          break; 
+        case 'game': 
+          {
+            this.gameTitle.runAnimation();
+          }
+          break;
+      default:
+        break;
+    }
+  }
+
   changeVisibilityDisplay() {
     if (this.screenElements[this.activeScreen].id === `prizes`) {
       setTimeout(() => {
@@ -60,6 +109,10 @@ export default class FullPageScroll {
         });
         this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
         this.screenElements[this.activeScreen].classList.add(`active`);
+        setTimeout(() => {
+          this.destroyTextAnimations();
+          this.runTextAnimations();
+        }, 10);  
       }, 1000);
     } else {
       this.screenElements.forEach((screen) => {
@@ -69,6 +122,8 @@ export default class FullPageScroll {
       this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
       setTimeout(() => {
         this.screenElements[this.activeScreen].classList.add(`active`);
+        this.destroyTextAnimations();
+        this.runTextAnimations();
       }, 100);
     }
   }
