@@ -163,12 +163,79 @@
   }
 }
 
+@keyframes control-opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes control-motion-left {
+  from {
+    transform: translateX(-100px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes control-motion-right {
+  from {
+    transform: translateX(100px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes control-rotate {
+  from {
+    transform: translateX(-100px) rotate(-180deg);
+  }
+
+  to {
+    transform: rotate(0);
+  }
+}
+
+@keyframes control-rotate-right {
+  from {
+    transform: translateX(100px) rotate(180deg);
+  }
+
+  to {
+    transform: rotate(0);
+  }
+}
+
 .slider__control {
   @include btn-reset;
   position: relative;
   width: 4rem;
   height: 4rem;
   color: $c-dark;
+  opacity: 0;
+
+  &--prev {
+    animation: control-opacity, control-motion-left, control-rotate;
+    animation-duration: 0.8s, 0.8s, 0.8s;
+    animation-delay: 0.5s, 0.5s, 0.5s;
+    animation-fill-mode: forwards, forwards, forwards;
+  }
+
+  &--next {
+    animation: control-opacity, control-motion-right, control-rotate-right;
+    animation-duration: 0.8s, 0.8s, 0.8s;
+    animation-delay: 0.5s, 0.5s, 0.5s;
+    animation-fill-mode: forwards, forwards, forwards;
+  }
+
+  
 
   @media (min-width: $stop-scaling) {
     width: 40px;
@@ -230,7 +297,7 @@
   }
 
   &.swiper-button-disabled {
-    opacity: 0.5;
+    // opacity: 0.5;
     pointer-events: none;
   }
 }

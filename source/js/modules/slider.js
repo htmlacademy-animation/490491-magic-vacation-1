@@ -2,8 +2,16 @@ import Swiper from "swiper";
 
 export default () => {
   let storySlider;
+  let bodyEl = document.body;
   let sliderContainer = document.getElementById(`story`);
   sliderContainer.style.backgroundImage = `url("img/slide1.jpg"), linear-gradient(180deg, rgba(83, 65, 118, 0) 0%, #523E75 16.85%)`;
+
+  const setActiveTheme = function (name) {
+    bodyEl.classList.remove('page-load--purple');
+    bodyEl.classList.remove('page-load--blue');
+    bodyEl.classList.remove('page-load--light-blue');
+    bodyEl.classList.add(name);
+  };
 
   const setSlider = function () {
     if (((window.innerWidth / window.innerHeight) < 1) || window.innerWidth < 769) {
@@ -19,12 +27,16 @@ export default () => {
           slideChange: () => {
             if (storySlider.activeIndex === 0 || storySlider.activeIndex === 1) {
               sliderContainer.style.backgroundImage = `url("img/slide1.jpg"), linear-gradient(180deg, rgba(83, 65, 118, 0) 0%, #523E75 16.85%)`;
+              setActiveTheme('page-load--purple');
             } else if (storySlider.activeIndex === 2 || storySlider.activeIndex === 3) {
-              sliderContainer.style.backgroundImage = `url("img/slide2.jpg"), linear-gradient(180deg, rgba(45, 54, 179, 0) 0%, #2A34B0 16.85%)`;
+              sliderContainer.style.backgroundImage = `url("img/slide2.jpg"), linear-gradient(180deg, rgba(45, 54, 179, 0) 0%, #2A34B0 16.85%)`;  
+              setActiveTheme('page-load--blue');
             } else if (storySlider.activeIndex === 4 || storySlider.activeIndex === 5) {
-              sliderContainer.style.backgroundImage = `url("img/slide3.jpg"), linear-gradient(180deg, rgba(92, 138, 198, 0) 0%, #5183C4 16.85%)`;
+              sliderContainer.style.backgroundImage = `url("img/slide3.jpg"), linear-gradient(180deg, rgba(92, 138, 198, 0) 0%, #5183C4 16.85%)`;        
+              setActiveTheme('page-load--light-blue');
             } else if (storySlider.activeIndex === 6 || storySlider.activeIndex === 7) {
               sliderContainer.style.backgroundImage = `url("img/slide4.jpg"), linear-gradient(180deg, rgba(45, 39, 63, 0) 0%, #2F2A42 16.85%)`;
+              setActiveTheme('');
             }
           },
           resize: () => {
@@ -53,12 +65,16 @@ export default () => {
           slideChange: () => {
             if (storySlider.activeIndex === 0) {
               sliderContainer.style.backgroundImage = `url("img/slide1.jpg")`;
+              setActiveTheme('page-load--purple');
             } else if (storySlider.activeIndex === 2) {
-              sliderContainer.style.backgroundImage = `url("img/slide2.jpg")`;
+              sliderContainer.style.backgroundImage = `url("img/slide2.jpg")`; 
+              setActiveTheme('page-load--blue');
             } else if (storySlider.activeIndex === 4) {
-              sliderContainer.style.backgroundImage = `url("img/slide3.jpg")`;
+              sliderContainer.style.backgroundImage = `url("img/slide3.jpg")`;       
+              setActiveTheme('page-load--light-blue');
             } else if (storySlider.activeIndex === 6) {
               sliderContainer.style.backgroundImage = `url("img/slide4.jpg")`;
+              setActiveTheme('');
             }
           },
           resize: () => {

@@ -106,6 +106,158 @@
       border-color: $c-purple;
     }
   }
+
+  .page-load--purple .social-block--active & {
+    svg {
+      color: $c-light;
+    }
+
+    &::before {
+      background-color: $c-dark;
+      border: 1px solid $c-dark;
+    }
+  }
+
+  .page-load--purple & {
+    svg {
+      color: $c-purple;    
+    }    
+
+    &:hover {
+      svg {
+        color: $c-dark;   
+      } 
+
+      &::before {
+        background-color: $c-light;
+        border: 1px solid $c-light;
+      }
+    }
+
+    &:focus {
+      svg {
+        color: $c-dark;
+      }      
+
+      &::before {
+        background-color: $c-light;
+        border: 1px solid $c-dark;
+      }
+    }
+
+    &:active {
+      svg {
+        color: $c-light;
+      }
+
+      &::before {
+        background-color: $c-dark;
+        border: 1px solid $c-dark;
+      }
+    }
+  }
+
+
+  .page-load--blue .social-block--active & {
+    svg {
+      color: $c-light;
+    }
+
+    &::before {
+      background-color: $c-light-blue;
+      border: 1px solid $c-light-blue;
+    }
+  }
+
+  .page-load--blue & {
+    svg {
+      color: $c-blue;  
+    }  
+
+    &:hover {
+      svg {
+        color: $c-light-blue;   
+      } 
+
+      &::before {
+        background-color: $c-light;
+        border: 1px solid $c-light;
+      }
+    }
+
+    &:focus {
+      svg {
+        color: $c-light-blue;
+      }      
+
+      &::before {
+        background-color: $c-light;
+        border: 1px solid $c-light-blue;
+      }
+    }
+
+    &:active {
+      svg {
+        color: $c-light;
+      }
+
+      &::before {
+        background-color: $c-light-blue;
+        border: 1px solid $c-light-blue;
+      }
+    }
+  }  
+
+
+  .page-load--light-blue .social-block--active & {
+    svg {
+      color: $c-light;
+    }
+
+    &::before {
+      background-color: $c-blue;
+      border: 1px solid $c-blue;
+    }
+  }
+
+  .page-load--light-blue & {
+    svg {
+      color: $c-light-blue;  
+    }  
+
+    &:hover {
+      svg {
+        color: $c-blue;   
+      } 
+
+      &::before {
+        background-color: $c-light;
+        border: 1px solid $c-light;
+      }
+    }
+
+    &:focus {
+      svg {
+        color: $c-blue;
+      }      
+
+      &::before {
+        background-color: $c-light;
+        border: 1px solid $c-blue;
+      }
+    }
+
+    &:active {
+      svg {
+        color: $c-light;
+      }
+
+      &::before {
+        background-color: $c-blue;
+        border: 1px solid $c-blue;
+      }
+    }
+  }  
 }
 
 .social-block__list {
@@ -203,6 +355,17 @@
   transition-property: opacity, transform;
   transition-duration: 0.35s;
 
+  .page-load--purple &:hover {
+    color: $c-dark;
+  }
+
+  .page-load--blue &:hover {
+    color: $c-light-blue;
+  }
+
+  .page-load--light-blue &:hover {
+    color: $c-blue;
+  }
 
   @media (min-width: $stop-scaling) {
     width: 40px;

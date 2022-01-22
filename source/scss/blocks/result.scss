@@ -528,6 +528,36 @@
   }
 }
 
+@keyframes result-btn-opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes result-btn-motion {
+  from {
+    transform: translateX(100px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes result-btn-rotate {
+  from {
+    transform: translateX(100px) rotate(180deg);
+  }
+
+  to {
+    transform: rotate(0);
+  }
+}
+
 .result__button {
   @include btn-reset;
   display: flex;
@@ -540,6 +570,12 @@
   font-size: 2.4rem;
   line-height: 1.2;
   color: $c-light;
+  opacity: 0;
+
+  animation: result-btn-opacity;
+  animation-duration: 0.8s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
 
   @media (min-width: $stop-scaling) {
     margin: auto auto 10px;
@@ -572,6 +608,11 @@
     width: 4rem;
     height: 4rem;
     color: $c-dark;
+
+    animation: result-btn-motion, result-btn-rotate;
+    animation-duration: 0.8s, 0.8s;
+    animation-delay: 0.5s, 0.5s;
+    animation-fill-mode: forwards, forwards;
 
     @media (min-width: $stop-scaling) {
       margin-left: 15px;

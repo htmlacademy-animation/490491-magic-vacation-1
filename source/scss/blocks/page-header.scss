@@ -309,6 +309,39 @@
         background-color: $c-purple;
       }
     }
+
+    .page-load--purple & {
+      &:hover,
+      &:focus {
+        color: $c-dark;
+
+        &::after {
+          background-color: $c-dark;
+        }
+      }
+    }
+
+    .page-load--blue & {
+      &:hover,
+      &:focus {
+        color: $c-light-blue;
+
+        &::after {
+          background-color: $c-light-blue;
+        }
+      }
+    }
+
+    .page-load--light-blue & {
+      &:hover,
+      &:focus {
+        color: $c-blue;
+
+        &::after {
+          background-color: $c-blue;
+        }
+      }
+    }
   }
 }
 

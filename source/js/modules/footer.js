@@ -5,8 +5,12 @@ export default () => {
     for (let i = 0; i < footerTogglers.length; i++) {
       footerTogglers[i].addEventListener(`click`, function () {
         let footer = footerTogglers[i].parentNode;
-        if (footer.classList.contains(`screen__footer--full`)) {
-          footer.classList.remove(`screen__footer--full`);
+        if (footer.classList.contains(`screen__footer--full`)) {  
+          footer.classList.add(`screen__footer--close`); 
+          setTimeout(() => {
+            footer.classList.remove(`screen__footer--full`);  
+            footer.classList.remove(`screen__footer--close`); 
+          }, 600);
         } else {
           footer.classList.add(`screen__footer--full`);
         }
