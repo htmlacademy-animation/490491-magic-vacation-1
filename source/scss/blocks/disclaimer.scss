@@ -1,6 +1,17 @@
+
+@keyframes disclaimer-appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .disclaimer {
   color: $c-dark;
-  background-color: $c-light;
+  background-color: $c-light;  
 
   @media (max-width: $tablet) and (orientation: portrait) {
     font-weight: 400;
@@ -22,6 +33,12 @@
     text-transform: uppercase;
     font-size: 1.2rem;
     line-height: 1.2;
+    opacity: 0;
+
+    animation: disclaimer-appear;
+    animation-duration: 0.4s;
+    animation-delay: 0.1s;
+    animation-fill-mode: forwards;
 
     @media (min-width: $stop-scaling) {
       font-size: 12px;

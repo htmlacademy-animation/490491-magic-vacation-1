@@ -7,6 +7,9 @@ export default class FullPageScroll {
     this.scrollFlag = true;
     this.timeout = null;
 
+    this.bodyEl = document.body;
+    this.previousTheme = ``;
+    this.isPrizes = false;
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
 
@@ -100,9 +103,39 @@ export default class FullPageScroll {
     }
   }
 
+  removeTheme() {
+    if (this.bodyEl.classList.contains('page-load--purple')) {
+      this.previousTheme = 'page-load--purple';
+      this.bodyEl.classList.remove('page-load--purple');
+    }
+    if (this.bodyEl.classList.contains('page-load--blue')) {
+      this.previousTheme = 'page-load--blue';
+      this.bodyEl.classList.remove('page-load--blue');
+    }
+    if (this.bodyEl.classList.contains('page-load--light-blue')) {
+      this.previousTheme = 'page-load--light-blue';
+      this.bodyEl.classList.remove('page-load--light-blue');
+    }
+  }
+
+  switchScreen() {
+    this.screenElements.forEach((screen) => {
+      screen.classList.add(`screen--hidden`);
+      screen.classList.remove(`active`);
+    });
+    this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
+    setTimeout(() => {
+      this.screenElements[this.activeScreen].classList.add(`active`);
+      this.destroyTextAnimations();
+      this.runTextAnimations();
+    }, 100);
+  }
+
   changeVisibilityDisplay() {
     if (this.screenElements[this.activeScreen].id === `prizes`) {
+      this.isPrizes = true;
       setTimeout(() => {
+        this.removeTheme();
         this.screenElements.forEach((screen) => {
           screen.classList.add(`screen--hidden`);
           screen.classList.remove(`active`);
@@ -112,19 +145,32 @@ export default class FullPageScroll {
         setTimeout(() => {
           this.destroyTextAnimations();
           this.runTextAnimations();
-        }, 10);  
+        }, 10);
       }, 1000);
     } else {
-      this.screenElements.forEach((screen) => {
-        screen.classList.add(`screen--hidden`);
-        screen.classList.remove(`active`);
-      });
-      this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
-      setTimeout(() => {
-        this.screenElements[this.activeScreen].classList.add(`active`);
-        this.destroyTextAnimations();
-        this.runTextAnimations();
-      }, 100);
+
+      if (this.screenElements[this.activeScreen].id === `story`) {
+        if (this.previousTheme) {
+          this.bodyEl.classList.add(this.previousTheme);        
+        }
+      } else {
+        this.removeTheme();
+      }
+
+      
+
+      if (this.isPrizes) {
+        let screenPrizes = document.getElementById(`prizes`);
+        screenPrizes.classList.add('screen--close');
+        setTimeout(() => {
+          screenPrizes.classList.remove('screen--close');
+          this.switchScreen();
+        }, 200);
+      } else {
+        this.switchScreen();
+      }
+
+      this.isPrizes = false;
     }
   }
 
